@@ -1,6 +1,7 @@
 # Big-Data-Analysis-Using-PySpark
 
-## Dataset Generation
+Dataset Generation
+
 The dataset is generated using 'big_data.py' .
 Run the following command to create the CSV file:
 
