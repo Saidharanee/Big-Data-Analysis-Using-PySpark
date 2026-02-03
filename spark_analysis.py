@@ -12,10 +12,10 @@ df = spark.read.csv("sales_bigdata.csv", header=True, inferSchema=True)
 # Show schema
 df.printSchema()
 
-# 1️⃣ Total number of records
+# 1️ Total number of records
 print("Total Records:", df.count())
 
-# 2️⃣ Total sales per product
+# 2️ Total sales per product
 df = df.withColumn("total_price", df.price * df.quantity)
 
 sales_by_product = df.groupBy("product").agg(
@@ -24,14 +24,14 @@ sales_by_product = df.groupBy("product").agg(
 
 sales_by_product.show()
 
-# 3️⃣ Average order value per country
+# 3️ Average order value per country
 avg_sales_country = df.groupBy("country").agg(
     avg("total_price").alias("avg_order_value")
 )
 
 avg_sales_country.show()
 
-# 4️⃣ Most popular product
+# 4️ Most popular product
 popular_product = df.groupBy("product").agg(
     count("order_id").alias("orders")
 ).orderBy("orders", ascending=False)
